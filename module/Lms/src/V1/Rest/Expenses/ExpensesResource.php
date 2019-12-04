@@ -32,7 +32,7 @@ class ExpensesResource extends BaseResource
     public function fetchAll($params = [])
     {
         $expenses = $this->service->fetchAllPaginated(
-            ["session" => $this->getUriParam("session_id")]
+            ['session' => $this->getUriParam('session_id')]
         );
 
         $arrayCollection = new PaginatedAdapter($expenses);
