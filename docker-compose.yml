@@ -1,0 +1,55 @@
+###############################################################################
+#                          Generated on phpdocker.io                         #
+###############################################################################
+version: "3.1"
+
+services:
+
+    adminer:
+      image: adminer
+      container_name: lms-adminer
+      restart: always
+      ports:
+        - "8083:8080"
+
+    mysql:
+      image: mysql:5.6
+      container_name: lms-mysql
+      environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=lms_database
+        - MYSQL_USER=dbuser
+        - MYSQL_PASSWORD=123
+        - MYSQL_ROOT_HOST=%
+      ports:
+        - "8082:3306"
+
+    webserver:
+      image: nginx:alpine
+      container_name: lms-webserver
+      working_dir: /var/www/lms-api
+      volumes:
+          - .:/var/www/lms-api-2
+          - ./phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      ports:
+        - "8080:80"
+      links:
+        - mysql:lms-mysql
+
+    php-fpm:
+      build: phpdocker/php-fpm
+      container_name: lms-php-fpm
+      working_dir: /var/www/lms-api
+      volumes:
+        - .:/var/www/lms-api-2
+        - ./phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.3/fpm/conf.d/99-overrides.ini
+        - ./phpdocker/php-fpm/xdebug-php-ini-overrides.ini:/etc/php/7.3/mods-available/xdebug.ini
+      expose:
+        # XDebug port
+        - 9001
+      environment:
+        PHP_XDEBUG_ENABLED: 1
+        # sudo ifconfig en0 alias 10.254.254.254 255.255.255.0
+        XDEBUG_CONFIG: remote_host=10.254.254.254
+        # Name of the Docker server set up in PHPStorm
+        PHP_IDE_CONFIG: serverName=Lms

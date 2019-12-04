@@ -1,0 +1,17 @@
+vendor/*
+!vendor/solcre
+config/development.config.php
+data/cache/*
+vendor/*
+!vendor/solcre
+config/development.config.php
+data/cache/*
+!data/cache/.gitkeep
+data/log/
+phpunit.xml
+data/Doctrine
+data/DoctrineORMModule
+.idea/
+public_html/uploads/avatars
+phinx.yml
+.DS_Store
