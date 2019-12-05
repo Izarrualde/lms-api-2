@@ -13,9 +13,6 @@ class MeResource extends BaseResource
 
     public function fetchAll($params = [])
     {
-        return $this->service->fetchAll(
-            [
-                'cellphone' => $this->getLoggedUserId()
-            ]);
+        return $this->service->fetchMe($this->getLoggedUserId());
     }
 }

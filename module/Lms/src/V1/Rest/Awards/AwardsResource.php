@@ -1,10 +1,11 @@
 <?php
 namespace Lms\V1\Rest\Awards;
 
+use Solcre\SolcreFramework2\Common\BaseResource;
 use ZF\ApiProblem\ApiProblem;
 use ZF\Rest\AbstractResourceListener;
 
-class AwardsResource extends AbstractResourceListener
+class AwardsResource extends BaseResource
 {
     /**
      * Create a resource
