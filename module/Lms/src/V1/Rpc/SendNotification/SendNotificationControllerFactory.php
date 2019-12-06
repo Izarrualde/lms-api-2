@@ -2,10 +2,10 @@
 
 namespace Lms\V1\Rpc\SendNotification;
 
-use Solcre\Lms\Service\DeviceService;
-use Solcre\Lms\Service\NotificationService;
-use Solcre\Lms\Service\PermissionService;
-use Solcre\Lms\Service\ScheduledNotificationService;
+use Solcre\Pokerclub\Service\DeviceService;
+use Solcre\Pokerclub\Service\NotificationService;
+use Solcre\Pokerclub\Service\PermissionService;
+use Solcre\Pokerclub\Service\ScheduledNotificationService;
 
 class SendNotificationControllerFactory
 {

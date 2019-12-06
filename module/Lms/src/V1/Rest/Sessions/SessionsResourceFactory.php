@@ -1,7 +1,7 @@
 <?php
 namespace Lms\V1\Rest\Sessions;
 
-use Solcre\Lms\Service\PermissionService;
+use Solcre\Pokerclub\Service\PermissionService;
 use Solcre\Pokerclub\Service\SessionService;
 
 class SessionsResourceFactory

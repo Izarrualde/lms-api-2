@@ -3,11 +3,11 @@
 namespace Lms\V1\Rpc\SendNotification;
 
 use Exception;
-use Solcre\Lms\Entity\NotificationEntity;
-use Solcre\Lms\Service\DeviceService;
-use Solcre\Lms\Service\NotificationService;
-use Solcre\Lms\Service\PermissionService;
-use Solcre\Lms\Service\ScheduledNotificationService;
+use Solcre\Pokerclub\Entity\NotificationEntity;
+use Solcre\Pokerclub\Service\DeviceService;
+use Solcre\Pokerclub\Service\NotificationService;
+use Solcre\Pokerclub\Service\PermissionService;
+use Solcre\Pokerclub\Service\ScheduledNotificationService;
 use Solcre\SolcreFramework2\Utility\Date;
 use Zend\Mvc\Controller\AbstractActionController;
 use ZF\ApiProblem\ApiProblem;

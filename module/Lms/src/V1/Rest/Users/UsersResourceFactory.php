@@ -2,7 +2,7 @@
 
 namespace Lms\V1\Rest\Users;
 
-use Solcre\Lms\Service\PermissionService;
+use Solcre\Pokerclub\Service\PermissionService;
 use Solcre\Pokerclub\Service\UserService;
 
 class UsersResourceFactory
