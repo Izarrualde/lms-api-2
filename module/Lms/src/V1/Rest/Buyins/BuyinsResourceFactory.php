@@ -2,7 +2,7 @@
 
 namespace Lms\V1\Rest\Buyins;
 
-use Solcre\Lms\Service\PermissionService;
+use Solcre\Pokerclub\Service\PermissionService;
 use Solcre\Pokerclub\Service\BuyinSessionService;
 
 class BuyinsResourceFactory

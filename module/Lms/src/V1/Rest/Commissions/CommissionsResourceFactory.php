@@ -1,7 +1,7 @@
 <?php
 namespace Lms\V1\Rest\Commissions;
 
-use Solcre\Lms\Service\PermissionService;
+use Solcre\Pokerclub\Service\PermissionService;
 use Solcre\Pokerclub\Service\CommissionSessionService;
 
 class CommissionsResourceFactory

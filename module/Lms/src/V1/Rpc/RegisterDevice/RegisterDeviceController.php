@@ -2,8 +2,8 @@
 
 namespace Lms\V1\Rpc\RegisterDevice;
 
-use Solcre\Lms\Entity\DeviceEntity;
-use Solcre\Lms\Service\DeviceService;
+use Solcre\Pokerclu\Entity\DeviceEntity;
+use Solcre\Pokerclub\Service\DeviceService;
 use Zend\Mvc\Controller\AbstractActionController;
 use ZF\ApiProblem\ApiProblem;
 use ZF\ApiProblem\ApiProblemResponse;

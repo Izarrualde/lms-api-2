@@ -6,7 +6,7 @@ use PDO;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManager;
 use PDOStatement;
-use Solcre\Lms\Service\PermissionService;
+use Solcre\Pokerclub\Service\PermissionService;
 use ZF\OAuth2\Adapter\PdoAdapter;
 use ZF\ContentNegotiation\Request;
 
@@ -68,7 +68,7 @@ class CustomOAuth2Adapter extends PdoAdapter
         return $this->getClientId() === 'manager';
     }
 
-    private function hasManagerLogInPermission(string $username)
+    private function hasManagerLogInPermission(string $username): bool
     {
         return $this->permissionService->checkPermission('create', $username, 'manager_log_in');
     }

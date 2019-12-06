@@ -2,8 +2,8 @@
 
 namespace Lms\V1\Rest\Notifications;
 
-use Solcre\Lms\Service\NotificationService;
-use Solcre\Lms\Service\PermissionService;
+use Solcre\Pokerclub\Service\NotificationService;
+use Solcre\Pokerclub\Service\PermissionService;
 
 class NotificationsResourceFactory
 {

@@ -2,7 +2,7 @@
 
 namespace Lms\V1\Rpc\RegisterDevice;
 
-use Solcre\Lms\Service\DeviceService;
+use Solcre\Pokerclub\Service\DeviceService;
 
 class RegisterDeviceControllerFactory
 {
