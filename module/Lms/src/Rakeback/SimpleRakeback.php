@@ -1,5 +1,5 @@
 <?php
-namespace Solcre\lmsuy\Rakeback;
+namespace Lms\Rakeback;
 
 use Solcre\Pokerclub\Entity\UserSessionEntity;
 use Solcre\Pokerclub\Rakeback\RakebackAlgorithm;
@@ -7,7 +7,6 @@ use Solcre\Pokerclub\Rakeback\RakebackAlgorithm;
 class SimpleRakeback implements RakebackAlgorithm
 {
     const RAKEBACK_PERCENTAGE = 0.015;
-
     public function calculate(UserSessionEntity $userSession)
     {
         return $userSession->getSession()->getCommissionTotal()* self::RAKEBACK_PERCENTAGE;

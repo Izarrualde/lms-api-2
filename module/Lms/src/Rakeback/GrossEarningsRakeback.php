@@ -11,7 +11,7 @@ class GrossEarningsRakeback implements RakebackAlgorithm
     public function calculate(UserSessionEntity $userSession)
     {
         return ($userSession->getSession()->getCommissionTotal()
-        - $userSession->getSession()->getExpensesTotal())
-        * self::RAKEBACK_PERCENTAGE;
+                - $userSession->getSession()->getExpensesTotal())
+            * self::RAKEBACK_PERCENTAGE;
     }
 }
