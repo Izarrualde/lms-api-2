@@ -7,7 +7,7 @@ use Solcre\SolcreFramework2\Service\BaseService;
 
 class RakebackService
 {
-    const DIR        = 'C:\xampp\htdocs\lms-api\module\Lms\src\Rakeback'; ///home/lmsuy/module/Lms/src/Rakeback
+    const DIR        = 'C:\xampp\htdocs\lms-api\module\Lms\src\Rakeback'; // /home/lmsuy/module/Lms/src/Rakeback
     const NAME_SPACE = 'Lms\Rakeback';
 
     public function fetchAll(): array
