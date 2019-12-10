@@ -13,7 +13,7 @@ class RakebackService
     public function fetchAll(): array
     {
         if (! is_dir(self::DIR)) {
-            throw RakebackExceptions::PathIsNotDirException();
+            throw RakebackExceptions::pathIsNotDirException();
         }
 
         $param = self::DIR.'/*';
