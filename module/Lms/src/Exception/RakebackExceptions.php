@@ -6,12 +6,12 @@ namespace Lms\Exception;
  */
 class RakebackExceptions extends BaseException
 {
-    public static function PathIsNotDirException(): self
+    public static function pathIsNotDirException(): self
     {
         return new self('La ruta dada no es un directorio', 400);
     }
 
-    public static function UserHasNoPermissionException(): self
+    public static function userHasNoPermissionException(): self
     {
         return new self('Ingreso denegado', 400);
     }
