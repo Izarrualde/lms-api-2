@@ -9,7 +9,7 @@ class ServiceTipsResource extends BaseResource
 {
     public function getPermissionName(): string
     {
-        return 'usuarios';
+        return 'tips';
     }
 
     public function create($data)

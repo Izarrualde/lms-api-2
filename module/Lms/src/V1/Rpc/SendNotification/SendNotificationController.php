@@ -15,8 +15,8 @@ use ZF\ApiProblem\ApiProblemResponse;
 
 class SendNotificationController extends AbstractActionController
 {
-    const EVENT_NAME = 'create';
-    const PERMISSION_NAME = 'enviar_notificaciones';
+    public const EVENT_NAME      = 'create';
+    public const PERMISSION_NAME = 'enviar_notificaciones';
 
     const PLATFORM_ID = [
         'mixed'   => 0,

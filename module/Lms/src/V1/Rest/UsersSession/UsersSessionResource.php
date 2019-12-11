@@ -10,7 +10,7 @@ class UsersSessionResource extends BaseResource
 {
     public function getPermissionName(): string
     {
-        return 'usuarios';
+        return 'users_session';
     }
 
     public function fetchAll($params = [])

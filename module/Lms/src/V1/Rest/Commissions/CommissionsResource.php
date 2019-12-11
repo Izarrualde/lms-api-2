@@ -9,7 +9,7 @@ class CommissionsResource extends BaseResource
 {
     public function getPermissionName(): string
     {
-        return 'usuarios';
+        return 'Comisiones';
     }
 
     public function create($data)
