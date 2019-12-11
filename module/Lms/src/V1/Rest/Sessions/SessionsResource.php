@@ -12,6 +12,11 @@ class SessionsResource extends BaseResource
         return 'sesiones';
     }
 
+    public function getPermissionNameToListPastSessions(): string
+    {
+        return 'sesiones_pasadas';
+    }
+
     public function create($data)
     {
         $data['logged_user_cellphone'] = $this->getLoggedUserId();
@@ -32,7 +37,11 @@ class SessionsResource extends BaseResource
 
     public function fetchAll($params = [])
     {
-        $sessions = $this->service->fetchAllPaginated($params);
+        if (! $this->checkPermission($this->event, $this->getPermissionNameToListPastSessions(), false)) {
+            $params['endTime'] = null;
+        }
+
+        $sessions        = $this->service->fetchAllPaginated($params);
         $arrayCollection = new PaginatedAdapter($sessions);
         
         return new SessionsCollection($arrayCollection);

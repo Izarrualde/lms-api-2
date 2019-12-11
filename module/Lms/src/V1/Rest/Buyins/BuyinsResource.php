@@ -10,7 +10,7 @@ class BuyinsResource extends BaseResource
 {
     public function getPermissionName(): string
     {
-        return 'usuarios';
+        return 'buyins';
     }
 
     public function fetchAll($params = [])

@@ -9,7 +9,7 @@ class ExpensesResource extends BaseResource
 {
     public function getPermissionName(): string
     {
-        return 'usuarios';
+        return 'gastos';
     }
 
     public function create($data)
