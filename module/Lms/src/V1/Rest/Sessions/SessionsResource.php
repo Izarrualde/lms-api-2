@@ -9,7 +9,7 @@ class SessionsResource extends BaseResource
 {
     public function getPermissionName(): string
     {
-        return 'usuarios';
+        return 'sesiones';
     }
 
     public function create($data)
