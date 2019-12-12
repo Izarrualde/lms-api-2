@@ -8,7 +8,7 @@ use Lms\Service\RakebackService;
 
 class RakebackAlgorithmsController extends BaseControllerRpc
 {
-    public const EVENT_NAME      = 'delete';
+    public const EVENT_NAME      = 'fetchAll';
     public const PERMISSION_NAME = 'rakeback';
 
     private $rakebackService;
