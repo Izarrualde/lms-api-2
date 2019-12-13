@@ -1484,12 +1484,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Izarrualde/pokerclub.git",
-                "reference": "e46c9f6d8b2c8cbe41bfc9b48feb6ea9d912daaf"
+                "reference": "c29c8452b5d31444512e3c6f5ee9fb9e90d189bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Izarrualde/pokerclub/zipball/e46c9f6d8b2c8cbe41bfc9b48feb6ea9d912daaf",
-                "reference": "e46c9f6d8b2c8cbe41bfc9b48feb6ea9d912daaf",
+                "url": "https://api.github.com/repos/Izarrualde/pokerclub/zipball/c29c8452b5d31444512e3c6f5ee9fb9e90d189bd",
+                "reference": "c29c8452b5d31444512e3c6f5ee9fb9e90d189bd",
                 "shasum": ""
             },
             "require": {
@@ -1527,7 +1527,7 @@
                 }
             ],
             "description": "Library to manage players, games, rake, tips, and expenses of a poker club.",
-            "time": "2019-11-27T16:11:27+00:00"
+            "time": "2019-12-11T19:30:08+00:00"
         },
         {
             "name": "michelf/php-markdown",
@@ -1574,6 +1574,43 @@
                 "markdown"
             ],
             "time": "2018-01-15T00:49:33+00:00"
+        },
+        {
+            "name": "neitanod/forceutf8",
+            "version": "v2.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neitanod/forceutf8.git",
+                "reference": "c1fbe70bfb5ad41b8ec5785056b0e308b40d4831"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neitanod/forceutf8/zipball/c1fbe70bfb5ad41b8ec5785056b0e308b40d4831",
+                "reference": "c1fbe70bfb5ad41b8ec5785056b0e308b40d4831",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "ForceUTF8\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastián Grignoli",
+                    "email": "grignoli@gmail.com"
+                }
+            ],
+            "description": "PHP Class Encoding featuring popular Encoding::toUTF8() function --formerly known as forceUTF8()-- that fixes mixed encoded strings.",
+            "homepage": "https://github.com/neitanod/forceutf8",
+            "time": "2019-12-10T14:09:14+00:00"
         },
         {
             "name": "paragonie/random_compat",
