@@ -14,7 +14,8 @@ return array(
     'zf-mvc-auth' => array(
         'authentication' => array(
             'map' => array(
-                'Lms\\V1' => 'CustomOAuth2Adapter',
+                'Lms\\V1'        => 'CustomOAuth2Adapter',
+                'Statistics\\V1' => 'CustomOAuth2Adapter',
             ),
         ),
     ),

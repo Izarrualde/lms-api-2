@@ -1,6 +1,7 @@
 <?php
 namespace Lms\V1\Rpc\RevisionSession;
 
+use Exception;
 use Solcre\Pokerclub\Service\PermissionService;
 use Solcre\Pokerclub\Service\SessionService;
 use Solcre\Pokerclub\Entity\SessionEntity;
