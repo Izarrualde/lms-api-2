@@ -31,4 +31,5 @@ return [
     'Solcre\\Pokerclub',
     'DoctrineModule',
     'DoctrineORMModule',
+    'Statistics',
 ];

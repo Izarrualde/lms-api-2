@@ -3,6 +3,7 @@ namespace Lms\V1\Rest\Sessions;
 
 use Solcre\Pokerclub\Service\PermissionService;
 use Solcre\Pokerclub\Service\SessionService;
+use Solcre\Pokerclub\Service\UserService;
 
 class SessionsResourceFactory
 {
