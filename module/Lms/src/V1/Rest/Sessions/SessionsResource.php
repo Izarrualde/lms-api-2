@@ -4,6 +4,7 @@ namespace Lms\V1\Rest\Sessions;
 use Solcre\Pokerclub\Service\PermissionService;
 use Solcre\Pokerclub\Service\UserService;
 use Solcre\SolcreFramework2\Common\BaseResource;
+use Solcre\SolcreFramework2\Entity\PaginatedResult;
 use Solcre\SolcreFramework2\Service\BaseService;
 use ZF\ApiProblem\ApiProblem;
 use Solcre\SolcreFramework2\Adapter\PaginatedAdapter;
@@ -38,7 +39,7 @@ class SessionsResource extends BaseResource
 
     private function fetchMySessions()
     {
-        $idUser = $this->getLoggedUserId();
+        $idUser     = $this->getLoggedUserId();
 
         return $this->service->fetchMySessions($idUser, self::NUMBER_OF_SESSIONS);
     }
@@ -46,20 +47,16 @@ class SessionsResource extends BaseResource
     private function selectPermissionAndFetch($params)
     {
         if ($this->checkPermission($this->event, self::PAST_SESSIONS , false)) {
-            var_dump('soy admin');
             return $this->service->fetchAllPaginated($params);
         }
 
         if ($this->checkPermission($this->event, self::SESSIONS , false)) {
-            var_dump('soy encargado');
             $params['endTime'] = null;
 
             return $this->service->fetchAllPaginated($params);
         }
 
         if ($this->checkPermission($this->event, self::MY_SESSIONS , false)) {
-            var_dump('soy player');
-
             return $this->fetchMySessions();
         }
     }
@@ -67,10 +64,14 @@ class SessionsResource extends BaseResource
     public function fetchAll($params = [])
     {
         $sessions = $this->selectPermissionAndFetch($params);
-        die();
-        $arrayCollection = new PaginatedAdapter($sessions);
 
-        return new SessionsCollection($arrayCollection);
+        if ($sessions instanceof PaginatedResult) {
+            $arrayCollection = new PaginatedAdapter($sessions);
+
+            return new SessionsCollection($arrayCollection);
+        }
+
+        return $sessions;
     }
 
     public function update($id, $data)

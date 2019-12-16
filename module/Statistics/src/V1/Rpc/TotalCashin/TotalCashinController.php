@@ -1,12 +1,13 @@
 <?php
-namespace Statistics\V1\Rpc\ServiceTips;
+namespace Statistics\V1\Rpc\TotalCashin;
 
+use Exception;
 use Solcre\Pokerclub\Service\PermissionService;
 use Solcre\Pokerclub\Service\SessionService;
 use Solcre\SolcreFramework2\Common\BaseControllerRpc;
 use Zend\Mvc\Controller\AbstractActionController;
 
-class ServiceTipsController extends BaseControllerRpc
+class TotalCashinController extends BaseControllerRpc
 {
     public const STATUS_CODE_400 = 400;
     public const EVENT_NAME      = 'fetchAll';
@@ -22,7 +23,7 @@ class ServiceTipsController extends BaseControllerRpc
         $this->permissionService = $permissionService;
     }
 
-    public function serviceTipsAction()
+    public function totalCashinAction()
     {
         if (! $this->permissionService->checkPermission(self::EVENT_NAME, $this->getLoggedUserId(), self::PERMISSION_NAME)) {
             throw new Exception('Method not allowed for current user');
@@ -33,12 +34,12 @@ class ServiceTipsController extends BaseControllerRpc
             'to'   => $this->getParamFromBodyParams('to')
         ];
 
-        $sessions = $this->sessionService->fetchServiceTipsBetweenDates($data);
+        $result = $this->sessionService->fetchTotalCashinBySession($data);
 
-        if (! is_array($sessions)) {
+        if (! is_array($result)) {
             return $this->createApiProblemResponse(self::STATUS_CODE_400, 'Sessions Not Found in period');
-        };
+        }
 
-        return $sessions;
+        return $result;
     }
 }
