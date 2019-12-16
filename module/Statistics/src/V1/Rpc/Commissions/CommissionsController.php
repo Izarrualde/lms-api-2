@@ -10,8 +10,9 @@ use Zend\Mvc\Controller\AbstractActionController;
 class CommissionsController extends BaseControllerRpc
 {
     public const STATUS_CODE_400 = 400;
+    public const STATUS_CODE_401 = 401;
     public const EVENT_NAME      = 'fetchAll';
-    public const PERMISSION_NAME = 'mis_sesiones';
+    public const PERMISSION_NAME = 'estadisticas';
 
     private $sessionService;
     private $permissionService;
@@ -26,7 +27,7 @@ class CommissionsController extends BaseControllerRpc
     public function commissionsAction()
     {
         if (! $this->permissionService->checkPermission(self::EVENT_NAME, $this->getLoggedUserId(), self::PERMISSION_NAME)) {
-            throw new Exception('Method not allowed for current user');
+            return $this->createApiProblemResponse(self::STATUS_CODE_401, 'Method not allowed for current user');
         }
 
         $data = [

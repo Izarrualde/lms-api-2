@@ -1,6 +1,7 @@
 <?php
 namespace Lms\V1\Rpc\CalculateRakeback;
 
+use Exception;
 use Solcre\Pokerclub\Exception\BaseException;
 use Solcre\Pokerclub\Exception\SessionExceptions;
 use Solcre\Pokerclub\Service\PermissionService;
@@ -26,7 +27,7 @@ class CalculateRakebackController extends BaseControllerRpc
     public function calculateRakebackAction()
     {
         if (! $this->permissionService->checkPermission(self::EVENT_NAME, $this->getLoggedUserId(), self::PERMISSION_NAME)) {
-            throw new Exception('Method not allowed for current user');
+            return $this->createApiProblemResponse(400, 'Method not allowed for current user');
         }
 
         $idSession = $this->getParamFromRoute('session_id');
