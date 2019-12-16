@@ -1,13 +1,15 @@
 <?php
-namespace Statistics\V1\Rpc\ServiceTips;
+namespace Statistics\V1\Rpc\Expenses;
 
+use Exception;
 use Solcre\Pokerclub\Service\PermissionService;
 use Solcre\Pokerclub\Service\SessionService;
 use Solcre\SolcreFramework2\Common\BaseControllerRpc;
 use Zend\Mvc\Controller\AbstractActionController;
 
-class ServiceTipsController extends BaseControllerRpc
+class ExpensesController extends BaseControllerRpc
 {
+
     public const STATUS_CODE_400 = 400;
     public const EVENT_NAME      = 'fetchAll';
     public const PERMISSION_NAME = 'mis_sesiones';
@@ -22,7 +24,7 @@ class ServiceTipsController extends BaseControllerRpc
         $this->permissionService = $permissionService;
     }
 
-    public function serviceTipsAction()
+    public function expensesAction()
     {
         if (! $this->permissionService->checkPermission(self::EVENT_NAME, $this->getLoggedUserId(), self::PERMISSION_NAME)) {
             throw new Exception('Method not allowed for current user');
@@ -33,11 +35,11 @@ class ServiceTipsController extends BaseControllerRpc
             'to'   => $this->getParamFromBodyParams('to')
         ];
 
-        $sessions = $this->sessionService->fetchServiceTipsBetweenDates($data);
+        $sessions = $this->sessionService->fetchExpensesBetweenDates($data);
 
         if (! is_array($sessions)) {
             return $this->createApiProblemResponse(self::STATUS_CODE_400, 'Sessions Not Found in period');
-        };
+        }
 
         return $sessions;
     }

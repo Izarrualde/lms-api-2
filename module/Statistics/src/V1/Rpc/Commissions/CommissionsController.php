@@ -11,7 +11,7 @@ class CommissionsController extends BaseControllerRpc
 {
     public const STATUS_CODE_400 = 400;
     public const EVENT_NAME      = 'fetchAll';
-    public const PERMISSION_NAME = 'sesiones_pasadas';
+    public const PERMISSION_NAME = 'mis_sesiones';
 
     private $sessionService;
     private $permissionService;
@@ -25,8 +25,6 @@ class CommissionsController extends BaseControllerRpc
 
     public function commissionsAction()
     {
-        var_dump('en action');
-        var_dump($this->getLoggedUserId());
         if (! $this->permissionService->checkPermission(self::EVENT_NAME, $this->getLoggedUserId(), self::PERMISSION_NAME)) {
             throw new Exception('Method not allowed for current user');
         }
@@ -36,15 +34,12 @@ class CommissionsController extends BaseControllerRpc
             'to'   => $this->getParamFromBodyParams('to')
         ];
 
-        $sessions = $this->sessionService->fetchBetweenDates($data);
+        $sessions = $this->sessionService->fetchCommissionsBetweenDates($data);
 
         if (! is_array($sessions)) {
             return $this->createApiProblemResponse(self::STATUS_CODE_400, 'Sessions Not Found in period');
-        };
+        }
 
-        return [
-            'startTime1'           => 'commissionTotal1',
-            'startTime2'           => 'commissionTotal2'
-        ];
+        return $sessions;
     }
 }
