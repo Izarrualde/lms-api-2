@@ -1484,12 +1484,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Izarrualde/pokerclub.git",
-                "reference": "c29c8452b5d31444512e3c6f5ee9fb9e90d189bd"
+                "reference": "8b6290016f58ffb3f053d0a357c6138d165a3e97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Izarrualde/pokerclub/zipball/c29c8452b5d31444512e3c6f5ee9fb9e90d189bd",
-                "reference": "c29c8452b5d31444512e3c6f5ee9fb9e90d189bd",
+                "url": "https://api.github.com/repos/Izarrualde/pokerclub/zipball/8b6290016f58ffb3f053d0a357c6138d165a3e97",
+                "reference": "8b6290016f58ffb3f053d0a357c6138d165a3e97",
                 "shasum": ""
             },
             "require": {
@@ -1527,7 +1527,7 @@
                 }
             ],
             "description": "Library to manage players, games, rake, tips, and expenses of a poker club.",
-            "time": "2019-12-11T19:30:08+00:00"
+            "time": "2019-12-16T15:09:58+00:00"
         },
         {
             "name": "michelf/php-markdown",
@@ -5471,6 +5471,7 @@
                 "debug",
                 "zf"
             ],
+            "abandoned": true,
             "time": "2018-04-30T20:10:31+00:00"
         },
         {
