@@ -40,6 +40,8 @@ class ServiceTipsController extends BaseControllerRpc
             return $this->createApiProblemResponse(self::STATUS_CODE_400, 'Sessions Not Found in period');
         };
 
-        return $sessions;
+        return [
+            'data' => $sessions
+        ];
     }
 }
