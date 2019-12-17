@@ -9,6 +9,8 @@ return [
             'Statistics\\V1\\Rpc\\TotalCashin\\Controller' => \Statistics\V1\Rpc\TotalCashin\TotalCashinControllerFactory::class,
             'Statistics\\V1\\Rpc\\HoursPlayed\\Controller' => \Statistics\V1\Rpc\HoursPlayed\HoursPlayedControllerFactory::class,
             'Statistics\\V1\\Rpc\\Players\\Controller' => \Statistics\V1\Rpc\Players\PlayersControllerFactory::class,
+            'Statistics\\V1\\Rpc\\RakeRace\\Controller' => \Statistics\V1\Rpc\RakeRace\RakeRaceControllerFactory::class,
+            'Statistics\\V1\\Rpc\\TipsPerDealer\\Controller' => \Statistics\V1\Rpc\TipsPerDealer\TipsPerDealerControllerFactory::class,
         ],
     ],
     'router' => [
@@ -83,6 +85,26 @@ return [
                     ],
                 ],
             ],
+            'statistics.rpc.rake-race' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/statistics/rake-race',
+                    'defaults' => [
+                        'controller' => 'Statistics\\V1\\Rpc\\RakeRace\\Controller',
+                        'action' => 'rakeRace',
+                    ],
+                ],
+            ],
+            'statistics.rpc.tips-per-dealer' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/statistics/tips-per-dealer',
+                    'defaults' => [
+                        'controller' => 'Statistics\\V1\\Rpc\\TipsPerDealer\\Controller',
+                        'action' => 'tipsPerDealer',
+                    ],
+                ],
+            ],
         ],
     ],
     'zf-versioning' => [
@@ -94,6 +116,8 @@ return [
             4 => 'statistics.rpc.total-cashin',
             5 => 'statistics.rpc.hours-played',
             6 => 'statistics.rpc.players',
+            7 => 'statistics.rpc.rake-race',
+            8 => 'statistics.rpc.tips-per-dealer',
         ],
     ],
     'zf-rpc' => [
@@ -148,6 +172,20 @@ return [
             ],
             'route_name' => 'statistics.rpc.players',
         ],
+        'Statistics\\V1\\Rpc\\RakeRace\\Controller' => [
+            'service_name' => 'RakeRace',
+            'http_methods' => [
+                0 => 'POST',
+            ],
+            'route_name' => 'statistics.rpc.rake-race',
+        ],
+        'Statistics\\V1\\Rpc\\TipsPerDealer\\Controller' => [
+            'service_name' => 'TipsPerDealer',
+            'http_methods' => [
+                0 => 'POST',
+            ],
+            'route_name' => 'statistics.rpc.tips-per-dealer',
+        ],
     ],
     'zf-content-negotiation' => [
         'controllers' => [
@@ -158,6 +196,8 @@ return [
             'Statistics\\V1\\Rpc\\TotalCashin\\Controller' => 'Json',
             'Statistics\\V1\\Rpc\\HoursPlayed\\Controller' => 'Json',
             'Statistics\\V1\\Rpc\\Players\\Controller' => 'Json',
+            'Statistics\\V1\\Rpc\\RakeRace\\Controller' => 'Json',
+            'Statistics\\V1\\Rpc\\TipsPerDealer\\Controller' => 'Json',
         ],
         'accept_whitelist' => [
             'Statistics\\V1\\Rpc\\Commissions\\Controller' => [
@@ -195,6 +235,16 @@ return [
                 1 => 'application/json',
                 2 => 'application/*+json',
             ],
+            'Statistics\\V1\\Rpc\\RakeRace\\Controller' => [
+                0 => 'application/vnd.statistics.v1+json',
+                1 => 'application/json',
+                2 => 'application/*+json',
+            ],
+            'Statistics\\V1\\Rpc\\TipsPerDealer\\Controller' => [
+                0 => 'application/vnd.statistics.v1+json',
+                1 => 'application/json',
+                2 => 'application/*+json',
+            ],
         ],
         'content_type_whitelist' => [
             'Statistics\\V1\\Rpc\\Commissions\\Controller' => [
@@ -222,6 +272,14 @@ return [
                 1 => 'application/json',
             ],
             'Statistics\\V1\\Rpc\\Players\\Controller' => [
+                0 => 'application/vnd.statistics.v1+json',
+                1 => 'application/json',
+            ],
+            'Statistics\\V1\\Rpc\\RakeRace\\Controller' => [
+                0 => 'application/vnd.statistics.v1+json',
+                1 => 'application/json',
+            ],
+            'Statistics\\V1\\Rpc\\TipsPerDealer\\Controller' => [
                 0 => 'application/vnd.statistics.v1+json',
                 1 => 'application/json',
             ],
@@ -305,6 +363,28 @@ return [
             'Statistics\\V1\\Rpc\\Players\\Controller' => [
                 'actions' => [
                     'players' => [
+                        'GET' => false,
+                        'POST' => true,
+                        'PUT' => false,
+                        'PATCH' => false,
+                        'DELETE' => false,
+                    ],
+                ],
+            ],
+            'Statistics\\V1\\Rpc\\RakeRace\\Controller' => [
+                'actions' => [
+                    'rakeRace' => [
+                        'GET' => false,
+                        'POST' => true,
+                        'PUT' => false,
+                        'PATCH' => false,
+                        'DELETE' => false,
+                    ],
+                ],
+            ],
+            'Statistics\\V1\\Rpc\\TipsPerDealer\\Controller' => [
+                'actions' => [
+                    'tipsPerDealer' => [
                         'GET' => false,
                         'POST' => true,
                         'PUT' => false,
