@@ -11,6 +11,7 @@ return [
             'Statistics\\V1\\Rpc\\Players\\Controller' => \Statistics\V1\Rpc\Players\PlayersControllerFactory::class,
             'Statistics\\V1\\Rpc\\RakeRace\\Controller' => \Statistics\V1\Rpc\RakeRace\RakeRaceControllerFactory::class,
             'Statistics\\V1\\Rpc\\TipsPerDealer\\Controller' => \Statistics\V1\Rpc\TipsPerDealer\TipsPerDealerControllerFactory::class,
+            'Statistics\\V1\\Rpc\\TipsPerService\\Controller' => \Statistics\V1\Rpc\TipsPerService\TipsPerServiceControllerFactory::class,
         ],
     ],
     'router' => [
@@ -105,6 +106,16 @@ return [
                     ],
                 ],
             ],
+            'statistics.rpc.tips-per-service' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/statistics/tips-per-service',
+                    'defaults' => [
+                        'controller' => 'Statistics\\V1\\Rpc\\TipsPerService\\Controller',
+                        'action' => 'tipsPerService',
+                    ],
+                ],
+            ],
         ],
     ],
     'zf-versioning' => [
@@ -118,6 +129,7 @@ return [
             6 => 'statistics.rpc.players',
             7 => 'statistics.rpc.rake-race',
             8 => 'statistics.rpc.tips-per-dealer',
+            9 => 'statistics.rpc.tips-per-service',
         ],
     ],
     'zf-rpc' => [
@@ -186,6 +198,13 @@ return [
             ],
             'route_name' => 'statistics.rpc.tips-per-dealer',
         ],
+        'Statistics\\V1\\Rpc\\TipsPerService\\Controller' => [
+            'service_name' => 'TipsPerService',
+            'http_methods' => [
+                0 => 'POST',
+            ],
+            'route_name' => 'statistics.rpc.tips-per-service',
+        ],
     ],
     'zf-content-negotiation' => [
         'controllers' => [
@@ -198,6 +217,7 @@ return [
             'Statistics\\V1\\Rpc\\Players\\Controller' => 'Json',
             'Statistics\\V1\\Rpc\\RakeRace\\Controller' => 'Json',
             'Statistics\\V1\\Rpc\\TipsPerDealer\\Controller' => 'Json',
+            'Statistics\\V1\\Rpc\\TipsPerService\\Controller' => 'Json',
         ],
         'accept_whitelist' => [
             'Statistics\\V1\\Rpc\\Commissions\\Controller' => [
@@ -245,6 +265,11 @@ return [
                 1 => 'application/json',
                 2 => 'application/*+json',
             ],
+            'Statistics\\V1\\Rpc\\TipsPerService\\Controller' => [
+                0 => 'application/vnd.statistics.v1+json',
+                1 => 'application/json',
+                2 => 'application/*+json',
+            ],
         ],
         'content_type_whitelist' => [
             'Statistics\\V1\\Rpc\\Commissions\\Controller' => [
@@ -280,6 +305,10 @@ return [
                 1 => 'application/json',
             ],
             'Statistics\\V1\\Rpc\\TipsPerDealer\\Controller' => [
+                0 => 'application/vnd.statistics.v1+json',
+                1 => 'application/json',
+            ],
+            'Statistics\\V1\\Rpc\\TipsPerService\\Controller' => [
                 0 => 'application/vnd.statistics.v1+json',
                 1 => 'application/json',
             ],
@@ -385,6 +414,17 @@ return [
             'Statistics\\V1\\Rpc\\TipsPerDealer\\Controller' => [
                 'actions' => [
                     'tipsPerDealer' => [
+                        'GET' => false,
+                        'POST' => true,
+                        'PUT' => false,
+                        'PATCH' => false,
+                        'DELETE' => false,
+                    ],
+                ],
+            ],
+            'Statistics\\V1\\Rpc\\TipsPerService\\Controller' => [
+                'actions' => [
+                    'tipsPerService' => [
                         'GET' => false,
                         'POST' => true,
                         'PUT' => false,
