@@ -1,12 +1,12 @@
 <?php
-namespace Statistics\V1\Rpc\Commissions;
+namespace Statistics\V1\Rpc\Players;
 
 use Exception;
 use Solcre\Pokerclub\Service\PermissionService;
 use Solcre\Pokerclub\Service\SessionService;
 use Solcre\SolcreFramework2\Common\BaseControllerRpc;
 
-class CommissionsController extends BaseControllerRpc
+class PlayersController extends BaseControllerRpc
 {
     public const STATUS_CODE_400 = 400;
     public const STATUS_CODE_401 = 401;
@@ -23,7 +23,7 @@ class CommissionsController extends BaseControllerRpc
         $this->permissionService = $permissionService;
     }
 
-    public function commissionsAction()
+    public function playersAction()
     {
         if (! $this->permissionService->checkPermission(self::EVENT_NAME, $this->getLoggedUserId(), self::PERMISSION_NAME)) {
             return $this->createApiProblemResponse(self::STATUS_CODE_401, 'Method not allowed for current user');
@@ -34,7 +34,7 @@ class CommissionsController extends BaseControllerRpc
             'to'   => $this->getParamFromBodyParams('to')
         ];
 
-        $sessions = $this->sessionService->fetchCommissionsBetweenDates($data);
+        $sessions = $this->sessionService->fetchPlayersBetweenDates($data);
 
         if (! is_array($sessions)) {
             return $this->createApiProblemResponse(self::STATUS_CODE_400, 'Sessions Not Found in period');

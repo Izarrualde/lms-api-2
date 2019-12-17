@@ -7,6 +7,8 @@ return [
             'Statistics\\V1\\Rpc\\DealerTips\\Controller' => \Statistics\V1\Rpc\DealerTips\DealerTipsControllerFactory::class,
             'Statistics\\V1\\Rpc\\Expenses\\Controller' => \Statistics\V1\Rpc\Expenses\ExpensesControllerFactory::class,
             'Statistics\\V1\\Rpc\\TotalCashin\\Controller' => \Statistics\V1\Rpc\TotalCashin\TotalCashinControllerFactory::class,
+            'Statistics\\V1\\Rpc\\HoursPlayed\\Controller' => \Statistics\V1\Rpc\HoursPlayed\HoursPlayedControllerFactory::class,
+            'Statistics\\V1\\Rpc\\Players\\Controller' => \Statistics\V1\Rpc\Players\PlayersControllerFactory::class,
         ],
     ],
     'router' => [
@@ -61,6 +63,26 @@ return [
                     ],
                 ],
             ],
+            'statistics.rpc.hours-played' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/statistics/hours-played',
+                    'defaults' => [
+                        'controller' => 'Statistics\\V1\\Rpc\\HoursPlayed\\Controller',
+                        'action' => 'hoursPlayed',
+                    ],
+                ],
+            ],
+            'statistics.rpc.players' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/statistics/players',
+                    'defaults' => [
+                        'controller' => 'Statistics\\V1\\Rpc\\Players\\Controller',
+                        'action' => 'players',
+                    ],
+                ],
+            ],
         ],
     ],
     'zf-versioning' => [
@@ -70,6 +92,8 @@ return [
             2 => 'statistics.rpc.dealer-tips',
             3 => 'statistics.rpc.expenses',
             4 => 'statistics.rpc.total-cashin',
+            5 => 'statistics.rpc.hours-played',
+            6 => 'statistics.rpc.players',
         ],
     ],
     'zf-rpc' => [
@@ -109,6 +133,21 @@ return [
             ],
             'route_name' => 'statistics.rpc.total-cashin',
         ],
+        'Statistics\\V1\\Rpc\\HoursPlayed\\Controller' => [
+            'service_name' => 'HoursPlayed',
+            'http_methods' => [
+                0 => 'GET',
+                1 => 'POST',
+            ],
+            'route_name' => 'statistics.rpc.hours-played',
+        ],
+        'Statistics\\V1\\Rpc\\Players\\Controller' => [
+            'service_name' => 'Players',
+            'http_methods' => [
+                0 => 'POST',
+            ],
+            'route_name' => 'statistics.rpc.players',
+        ],
     ],
     'zf-content-negotiation' => [
         'controllers' => [
@@ -117,6 +156,8 @@ return [
             'Statistics\\V1\\Rpc\\DealerTips\\Controller' => 'Json',
             'Statistics\\V1\\Rpc\\Expenses\\Controller' => 'Json',
             'Statistics\\V1\\Rpc\\TotalCashin\\Controller' => 'Json',
+            'Statistics\\V1\\Rpc\\HoursPlayed\\Controller' => 'Json',
+            'Statistics\\V1\\Rpc\\Players\\Controller' => 'Json',
         ],
         'accept_whitelist' => [
             'Statistics\\V1\\Rpc\\Commissions\\Controller' => [
@@ -144,6 +185,16 @@ return [
                 1 => 'application/json',
                 2 => 'application/*+json',
             ],
+            'Statistics\\V1\\Rpc\\HoursPlayed\\Controller' => [
+                0 => 'application/vnd.statistics.v1+json',
+                1 => 'application/json',
+                2 => 'application/*+json',
+            ],
+            'Statistics\\V1\\Rpc\\Players\\Controller' => [
+                0 => 'application/vnd.statistics.v1+json',
+                1 => 'application/json',
+                2 => 'application/*+json',
+            ],
         ],
         'content_type_whitelist' => [
             'Statistics\\V1\\Rpc\\Commissions\\Controller' => [
@@ -163,6 +214,14 @@ return [
                 1 => 'application/json',
             ],
             'Statistics\\V1\\Rpc\\TotalCashin\\Controller' => [
+                0 => 'application/vnd.statistics.v1+json',
+                1 => 'application/json',
+            ],
+            'Statistics\\V1\\Rpc\\HoursPlayed\\Controller' => [
+                0 => 'application/vnd.statistics.v1+json',
+                1 => 'application/json',
+            ],
+            'Statistics\\V1\\Rpc\\Players\\Controller' => [
                 0 => 'application/vnd.statistics.v1+json',
                 1 => 'application/json',
             ],
@@ -224,6 +283,28 @@ return [
             'Statistics\\V1\\Rpc\\TotalCashin\\Controller' => [
                 'actions' => [
                     'totalCashin' => [
+                        'GET' => false,
+                        'POST' => true,
+                        'PUT' => false,
+                        'PATCH' => false,
+                        'DELETE' => false,
+                    ],
+                ],
+            ],
+            'Statistics\\V1\\Rpc\\HoursPlayed\\Controller' => [
+                'actions' => [
+                    'hoursPlayed' => [
+                        'GET' => false,
+                        'POST' => true,
+                        'PUT' => false,
+                        'PATCH' => false,
+                        'DELETE' => false,
+                    ],
+                ],
+            ],
+            'Statistics\\V1\\Rpc\\Players\\Controller' => [
+                'actions' => [
+                    'players' => [
                         'GET' => false,
                         'POST' => true,
                         'PUT' => false,
