@@ -14,4 +14,3 @@ class TipsPerDealerControllerFactory
         return new TipsPerDealerController($sessionService, $permissionService);
     }
 }
-

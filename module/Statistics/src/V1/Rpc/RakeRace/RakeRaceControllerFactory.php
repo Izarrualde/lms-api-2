@@ -14,4 +14,3 @@ class RakeRaceControllerFactory
         return new RakeRaceController($sessionService, $permissionService);
     }
 }
-

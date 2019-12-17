@@ -45,4 +45,3 @@ class TipsPerDealerController extends BaseControllerRpc
         ];
     }
 }
-

@@ -45,4 +45,3 @@ class RakeRaceController extends BaseControllerRpc
         ];
     }
 }
-
