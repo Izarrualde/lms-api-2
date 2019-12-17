@@ -41,6 +41,8 @@ class TotalCashinController extends BaseControllerRpc
             return $this->createApiProblemResponse(self::STATUS_CODE_400, 'Sessions Not Found in period');
         }
 
-        return $result;
+        return [
+            'data' => $result
+        ];
     }
 }
